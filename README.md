@@ -12,7 +12,7 @@ Este projeto é um aplicativo de chat desenvolvido com Flutter, integrando a mai
 ## Como usar
 1. Clone o repositório do projeto:
 ```git
-git clone [URL do repositório]
+git clone https://github.com/Barba2k2/gemini_ai_chat.git
 ```
 
 2. Navegue até a pasta do projeto e instale as dependências:
