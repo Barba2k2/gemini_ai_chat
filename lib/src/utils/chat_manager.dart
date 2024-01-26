@@ -36,25 +36,22 @@ class ChatManager {
     }
   }
 
-  // Adicione uma nova variável de membro na classe ChatManager
   String _bufferedMessage = '';
 
   void onMessageReceived(String response) {
     if (response.endsWith('.')) {
-      // Se a resposta termina com um ponto, assuma que é o final da mensagem
-      _bufferedMessage += response; // Concatena a parte recebida
+      _bufferedMessage += response;
       messages.insert(
         0,
         types.TextMessage(
           author: bot,
           createdAt: DateTime.now().millisecondsSinceEpoch,
           id: const Uuid().v4(),
-          text: _bufferedMessage, // Use a mensagem completa
+          text: _bufferedMessage,
         ),
       );
-      _bufferedMessage = ''; // Limpa o buffer para a próxima mensagem
+      _bufferedMessage = '';
     } else {
-      // Se não for o fim da mensagem, apenas adicione ao buffer
       _bufferedMessage += response;
     }
     isLoading = false;
