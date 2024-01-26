@@ -10,6 +10,17 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+  # ui
+  flutter_chat_types: ^3.6.2
+  flutter_chat_ui: ^1.6.10
+
+  # api
+  http: ^1.2.0
+  web_socket_channel: ^2.4.0
+  
+  image_picker: ^1.0.7
+  intl: ^0.19.0
+  uuid: ^4.3.3
 
 dev_dependencies:
   flutter_test:
