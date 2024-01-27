@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'src/views/chat_page.dart';
+import 'src/screens/chat/chat_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +14,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Gamini',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        drawerTheme: DrawerThemeData(
+          scrimColor: Colors.black.withOpacity(0.1),
+
+        ),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
