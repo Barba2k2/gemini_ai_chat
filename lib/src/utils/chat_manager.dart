@@ -14,6 +14,7 @@ class ChatManager {
   bool isLoading = false;
   WebSocketChannel? channel;
   bool isConversationActive = true;
+  void Function()? onMessageUpdated;
 
   void initializeWebsocket() {
     try {
@@ -42,9 +43,9 @@ class ChatManager {
   void onMessageReceived(String response) {
     isLoading = false;
     debugPrint('Response: $response');
-    if (response.endsWith('.')) {
-      _bufferedMessage += response;
+    _bufferedMessage += response;
 
+    if (response.endsWith('.')) {
       final typingMessage = types.CustomMessage(
         author: bot,
         createdAt: DateTime.now().millisecondsSinceEpoch,
@@ -56,8 +57,10 @@ class ChatManager {
 
       messages.insert(0, typingMessage);
       _bufferedMessage = '';
-    } else {
-      _bufferedMessage += response;
+
+      if (onMessageUpdated != null) {
+        onMessageUpdated!();
+      }
     }
   }
 }

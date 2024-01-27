@@ -50,10 +50,10 @@ class _TypingMessageBubbleState extends State<TypingMessageBubble>
       padding: const EdgeInsets.all(16),
       child: Text(
         widget.message.substring(0, _typingAnimation.value),
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 14,
-          height: 1.4,
+          height: 1.7,
         ),
       ),
     );

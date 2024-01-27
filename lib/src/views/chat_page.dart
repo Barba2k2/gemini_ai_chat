@@ -23,11 +23,15 @@ class _ChatPageState extends State<ChatPage> {
   void initState() {
     super.initState();
     chatManager.initializeWebsocket();
+    chatManager.onMessageUpdated = () {
+      setState(() {});
+    };
     chatManager.channel?.stream.listen((event) {
       try {
         final Map<String, dynamic> data = json.decode(event);
         final String text = data['text'];
         chatManager.onMessageReceived(text);
+        setState(() {});
       } on FormatException {
         chatManager.onMessageReceived(event);
       }
