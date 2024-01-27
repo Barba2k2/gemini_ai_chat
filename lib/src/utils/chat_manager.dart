@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:gamini_ai_chat/src/widgets/typing_messages_bubble.dart';
 import 'package:uuid/uuid.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
@@ -39,21 +40,24 @@ class ChatManager {
   String _bufferedMessage = '';
 
   void onMessageReceived(String response) {
+    isLoading = false;
+    debugPrint('Response: $response');
     if (response.endsWith('.')) {
       _bufferedMessage += response;
-      messages.insert(
-        0,
-        types.TextMessage(
-          author: bot,
-          createdAt: DateTime.now().millisecondsSinceEpoch,
-          id: const Uuid().v4(),
-          text: _bufferedMessage,
-        ),
+
+      final typingMessage = types.CustomMessage(
+        author: bot,
+        createdAt: DateTime.now().millisecondsSinceEpoch,
+        id: const Uuid().v4(),
+        metadata: {
+          'widget': TypingMessageBubble(message: _bufferedMessage),
+        },
       );
+
+      messages.insert(0, typingMessage);
       _bufferedMessage = '';
     } else {
       _bufferedMessage += response;
     }
-    isLoading = false;
   }
 }

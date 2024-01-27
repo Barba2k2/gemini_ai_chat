@@ -16,6 +16,7 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
   final ChatManager chatManager = ChatManager();
+  bool isPremium = true;
 
   @override
   void initState() {
@@ -45,7 +46,7 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       body: Chat(
         messages: chatManager.messages,
-        onAttachmentPressed: _handleImageSelection,
+        onAttachmentPressed: isPremium ? _handleImageSelection : null,
         onSendPressed: _handleSendPressed,
         showUserAvatars: false,
         showUserNames: true,
@@ -63,10 +64,19 @@ class _ChatPageState extends State<ChatPage> {
           seenIcon: Text(
             'read',
             style: TextStyle(
-              fontSize: 10.0,
+              fontSize: 14.0,
             ),
           ),
         ),
+        customMessageBuilder: (message, {required int messageWidth}) {
+          if (message.metadata?['widget'] != null) {
+            final widget = message.metadata!['widget'];
+            if (widget is Widget) {
+              return widget;
+            }
+          }
+          return const SizedBox();
+        },
       ),
     );
   }
