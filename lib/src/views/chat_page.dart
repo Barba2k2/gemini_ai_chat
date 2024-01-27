@@ -17,6 +17,7 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   final ChatManager chatManager = ChatManager();
   bool isPremium = true;
+  bool loading = false;
 
   @override
   void initState() {
@@ -52,6 +53,11 @@ class _ChatPageState extends State<ChatPage> {
         showUserNames: true,
         user: chatManager.user,
         theme: const DefaultChatTheme(
+          sendButtonIcon: Icon(
+            Icons.arrow_upward_outlined,
+            color: Colors.white,
+            size: 26,
+          ),
           backgroundColor: Colors.black,
           inputBorderRadius: BorderRadius.zero,
           receivedMessageBodyTextStyle: TextStyle(color: Colors.white),
