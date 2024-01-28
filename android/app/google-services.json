@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "745735014690",
+    "project_id": "flutter-gemini",
+    "storage_bucket": "flutter-gemini.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:745735014690:android:228d0c494a8f44d3df3d7b",
+        "android_client_info": {
+          "package_name": "com.example.gamini_ai_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaUjPde_0HGmK3LpZNbX3_oEZrBh2chNw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

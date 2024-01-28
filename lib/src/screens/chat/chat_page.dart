@@ -3,7 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:gamini_ai_chat/src/screens/settings/settings_screen.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
@@ -111,7 +113,9 @@ class _ChatPageState extends State<ChatPage> {
                   'Configurações',
                   style: TextStyle(color: Colors.white),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const SettingsScreen());
+                },
               ),
             ],
           ),
